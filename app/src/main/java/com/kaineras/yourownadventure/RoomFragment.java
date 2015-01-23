@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
 import java.util.Random;
-import java.util.zip.Inflater;
 
 
 public class RoomFragment extends Fragment {
@@ -26,6 +24,7 @@ public class RoomFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
     }
 
@@ -33,7 +32,7 @@ public class RoomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_room, container, false);
+        view =inflater.inflate(R.layout.fragment_room, container, false);
         mButtonLeft=(ImageButton) view.findViewById(R.id.buttonLeft);
         mButtonRight=(ImageButton) view.findViewById(R.id.buttonRight);
         listenerLeft();
@@ -43,6 +42,7 @@ public class RoomFragment extends Fragment {
     }
 
     private void listenerLeft() {
+        if(mButtonLeft!=null)
         mButtonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +80,7 @@ public class RoomFragment extends Fragment {
     }
 
     private void listenerRight() {
+        if(mButtonRight!=null)
         mButtonRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

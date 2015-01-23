@@ -1,16 +1,13 @@
 package com.kaineras.yourownadventure;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
 import java.util.Random;
 
 
@@ -35,17 +32,21 @@ public class AlleyFragment extends Fragment{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view =inflater.inflate(R.layout.fragment_alley, container, false);
+    public void onStart() {
+        super.onStart();
         mButtonUp=(ImageButton) view.findViewById(R.id.buttonUp);
         mButtonLeft=(ImageButton) view.findViewById(R.id.buttonLeft);
         mButtonRight=(ImageButton) view.findViewById(R.id.buttonRight);
         listenerUp();
         listenerLeft();
         listenerRight();
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view =inflater.inflate(R.layout.fragment_alley, container, false);
         return view;
     }
 
@@ -58,11 +59,6 @@ public class AlleyFragment extends Fragment{
                 Random r = new Random();
                 int ran = r.nextInt(10);
                 if (ran % 2 == 0) {
-                    AlleyFragment fragment = new AlleyFragment();
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
-                } else {
                     RoomFragment fragment = new RoomFragment();
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -91,13 +87,6 @@ public class AlleyFragment extends Fragment{
                 {
                     int ran = r.nextInt(10);
                     if(ran%2==0) {
-                        AlleyFragment fragment = new AlleyFragment();
-                        fragmentTransaction.replace(R.id.container, fragment);
-                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.commit();
-                    }
-                    else
-                    {
                         RoomFragment fragment = new RoomFragment();
                         fragmentTransaction.replace(R.id.container, fragment);
                         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -128,13 +117,6 @@ public class AlleyFragment extends Fragment{
                 {
                     int ran = r.nextInt(10);
                     if(ran%2==0) {
-                        AlleyFragment fragment = new AlleyFragment();
-                        fragmentTransaction.replace(R.id.container, fragment);
-                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.commit();
-                    }
-                    else
-                    {
                         RoomFragment fragment = new RoomFragment();
                         fragmentTransaction.replace(R.id.container, fragment);
                         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
