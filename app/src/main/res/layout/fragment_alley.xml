@@ -1,0 +1,50 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kaineras.yourownadventure.AlleyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal|top"
+        android:contentDescription="@string/text_img_alley"
+        android:src="@drawable/alley" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+        android:text="@string/text_alley"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:background="#a3000000" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonLeft"
+        android:layout_gravity="left|bottom"
+        android:src="@drawable/f_left"
+        android:background="#00ffffff"
+        android:contentDescription="@string/img_button_left" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonUp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@drawable/f_up"
+        android:background="#00ffffff"
+        android:contentDescription="@string/img_button_up" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRight"
+        android:layout_gravity="right|bottom"
+        android:src="@drawable/f_right"
+        android:background="#00ffffff"
+        android:contentDescription="@string/img_button_right" />
+
+</FrameLayout>

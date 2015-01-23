@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">YourOwnAdventure</string>
+    <string name="title_activity_main">Your Own Adventure</string>
+    <string name="text_button_start">Start Traveling</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_alley">You have ventured down a dark alley, where would you like to go next</string>
+    <string name="text_room">You have entered a room with two doors</string>
+    <string name="text_win">You\'ve reached the gold!</string>
+    <string name="text_lost">You\'ve fallen into the pit of despair</string>
+    <string name="text_img_alley">Alley Image</string>
+    <string name="text_img_room">Room Image</string>
+    <string name="text_img_start">Start Image</string>
+    <string name="img_button_start">Start Button</string>
+    <string name="img_button_left">Left Button</string>
+    <string name="img_button_right">Right Button</string>
+    <string name="img_button_up">Up Button</string>
+    <string name="text_img_win">Win Image</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
