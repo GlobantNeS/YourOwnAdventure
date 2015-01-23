@@ -33,8 +33,8 @@ public class RoomFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =inflater.inflate(R.layout.fragment_room, container, false);
-        mButtonLeft=(ImageButton) view.findViewById(R.id.buttonLeft);
-        mButtonRight=(ImageButton) view.findViewById(R.id.buttonRight);
+        mButtonLeft=(ImageButton) view.findViewById(R.id.buttonDoor1);
+        mButtonRight=(ImageButton) view.findViewById(R.id.buttonDoor2);
         listenerLeft();
         listenerRight();
         return view;
@@ -42,7 +42,6 @@ public class RoomFragment extends Fragment {
     }
 
     private void listenerLeft() {
-        if(mButtonLeft!=null)
         mButtonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +79,6 @@ public class RoomFragment extends Fragment {
     }
 
     private void listenerRight() {
-        if(mButtonRight!=null)
         mButtonRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

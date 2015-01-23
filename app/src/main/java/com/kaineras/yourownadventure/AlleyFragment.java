@@ -34,12 +34,7 @@ public class AlleyFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-        mButtonUp=(ImageButton) view.findViewById(R.id.buttonUp);
-        mButtonLeft=(ImageButton) view.findViewById(R.id.buttonLeft);
-        mButtonRight=(ImageButton) view.findViewById(R.id.buttonRight);
-        listenerUp();
-        listenerLeft();
-        listenerRight();
+
     }
 
     @Override
@@ -47,6 +42,12 @@ public class AlleyFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view =inflater.inflate(R.layout.fragment_alley, container, false);
+        mButtonUp=(ImageButton) view.findViewById(R.id.buttonUp);
+        mButtonLeft=(ImageButton) view.findViewById(R.id.buttonLeft);
+        mButtonRight=(ImageButton) view.findViewById(R.id.buttonRight);
+        listenerUp();
+        listenerLeft();
+        listenerRight();
         return view;
     }
 

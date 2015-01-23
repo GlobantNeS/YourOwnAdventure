@@ -23,7 +23,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton2"
+        android:id="@+id/buttonDoor1"
         android:layout_gravity="left|bottom"
         android:src="@drawable/door1"
         android:background="#00ffffff"
@@ -32,7 +32,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton3"
+        android:id="@+id/buttonDoor2"
         android:layout_gravity="right|bottom"
         android:src="@drawable/door2"
         android:background="#00ffffff"

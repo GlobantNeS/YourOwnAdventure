@@ -12,14 +12,14 @@
         android:id="@+id/imageView3"
         android:src="@drawable/adventure"
         android:contentDescription="@string/text_img_start"
-        android:layout_above="@+id/imageButton"
+        android:layout_above="@+id/buttonStart"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
+        android:id="@+id/buttonStart"
         android:contentDescription="@string/img_button_start"
         android:src="@drawable/start"
         android:layout_alignParentBottom="true"

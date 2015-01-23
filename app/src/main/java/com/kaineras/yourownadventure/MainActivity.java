@@ -18,7 +18,7 @@ import java.util.Random;
 
 public class MainActivity extends ActionBarActivity {
 
-    ImageButton mButtonStart=null;
+
     FragmentTransaction fragmentTransaction;
 
     @Override
@@ -37,7 +37,6 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        preparedButton();
 
     }
 
@@ -47,30 +46,7 @@ public class MainActivity extends ActionBarActivity {
 
     }
 
-    private void preparedButton() {
-        mButtonStart=(ImageButton)findViewById(R.id.imageButton);
-        mButtonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Random r = new Random();
-                int ran = r.nextInt(10);
-                Log.d("Random",String.valueOf(ran));
-                if(ran%2==0) {
-                    AlleyFragment fragment = new AlleyFragment();
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
-                }
-                else
-                {
-                    RoomFragment fragment = new RoomFragment();
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
-                }
-            }
-        });
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
