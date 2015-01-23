@@ -42,7 +42,74 @@ public class AlleyFragment extends Fragment{
         mButtonUp=(ImageButton) view.findViewById(R.id.buttonUp);
         mButtonLeft=(ImageButton) view.findViewById(R.id.buttonLeft);
         mButtonRight=(ImageButton) view.findViewById(R.id.buttonRight);
+        listenerUp();
+        listenerLeft();
+        listenerRight();
 
+        return view;
+    }
+
+    private void listenerRight() {
+        mButtonRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                Random r = new Random();
+                int ran = r.nextInt(10);
+                if (ran % 2 == 0) {
+                    AlleyFragment fragment = new AlleyFragment();
+                    fragmentTransaction.replace(R.id.container, fragment);
+                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    fragmentTransaction.commit();
+                } else {
+                    RoomFragment fragment = new RoomFragment();
+                    fragmentTransaction.replace(R.id.container, fragment);
+                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    fragmentTransaction.commit();
+                }
+            }
+        });
+    }
+
+    private void listenerLeft() {
+        mButtonLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                Random r = new Random();
+                int lost = r.nextInt(10);
+                if(lost==6)
+                {
+                    LostFragment fragment = new LostFragment();
+                    fragmentTransaction.replace(R.id.container, fragment);
+                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                    fragmentTransaction.commit();
+                }
+                else
+                {
+                    int ran = r.nextInt(10);
+                    if(ran%2==0) {
+                        AlleyFragment fragment = new AlleyFragment();
+                        fragmentTransaction.replace(R.id.container, fragment);
+                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        fragmentTransaction.commit();
+                    }
+                    else
+                    {
+                        RoomFragment fragment = new RoomFragment();
+                        fragmentTransaction.replace(R.id.container, fragment);
+                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                        fragmentTransaction.commit();
+                    }
+                }
+
+            }
+        });
+    }
+
+    private void listenerUp() {
         mButtonUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +144,5 @@ public class AlleyFragment extends Fragment{
 
             }
         });
-        return view;
     }
 }
