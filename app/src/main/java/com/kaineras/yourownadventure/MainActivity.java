@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
             else
             {
                 getFragmentManager().popBackStack();
-                //removeCurrentFragment();
+                removeCurrentFragment();
 
                 return false;
             }
