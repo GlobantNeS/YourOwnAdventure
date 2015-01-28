@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
     {
         if (keyCode == KeyEvent.KEYCODE_BACK)
         {
-            if (getFragmentManager().getBackStackEntryCount() == 0)
+            if (getFragmentManager().getBackStackEntryCount() == 1)
             {
                 this.finish();
                 return false;
