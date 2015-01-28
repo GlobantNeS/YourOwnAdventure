@@ -24,6 +24,10 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        loadStartFragment();
+    }
+
+    private void loadStartFragment() {
         FragmentManager fragmentManager = getFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         Fragment newFragment = new StartFragment();
@@ -31,12 +35,6 @@ public class MainActivity extends ActionBarActivity {
         transaction.replace(R.id.container, newFragment);
         transaction.addToBackStack("Start");
         transaction.commit();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
     }
 
     @Override
@@ -62,31 +60,18 @@ public class MainActivity extends ActionBarActivity {
 
     public void removeCurrentFragment()
     {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        Fragment currentFrag =  getFragmentManager().findFragmentById(R.id.container);
-
-
         String fragName = "NONE";
 
-        if (currentFrag!=null)
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        Fragment currentFrag =  getFragmentManager().findFragmentById(R.id.container);
+
+        if (currentFrag!=null) {
             fragName = currentFrag.getClass().getSimpleName();
-
-
-        if (currentFrag != null)
             transaction.remove(currentFrag);
+        }
 
         transaction.commit();
-
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,22 +95,4 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_start, container, false);
-            return rootView;
-        }
-
-    }
 }

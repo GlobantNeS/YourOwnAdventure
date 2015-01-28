@@ -39,21 +39,29 @@ public class StartFragment extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 if(ran%2==0) {
-                    AlleyFragment fragment = new AlleyFragment();
-                    fragmentTransaction.addToBackStack("Alley");
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
+                    loadAlleyFragment();
                 }
                 else
                 {
-                    RoomFragment fragment = new RoomFragment();
-                    fragmentTransaction.addToBackStack("Room");
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
+                    loadRoomFragment();
                 }
             }
         });
+    }
+
+    private void loadRoomFragment() {
+        RoomFragment fragment = new RoomFragment();
+        fragmentTransaction.addToBackStack("Room");
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.commit();
+    }
+
+    private void loadAlleyFragment() {
+        AlleyFragment fragment = new AlleyFragment();
+        fragmentTransaction.addToBackStack("Alley");
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.commit();
     }
 }
