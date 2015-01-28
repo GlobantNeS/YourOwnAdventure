@@ -40,6 +40,7 @@ public class StartFragment extends Fragment {
                 fragmentTransaction = fragmentManager.beginTransaction();
                 if(ran%2==0) {
                     AlleyFragment fragment = new AlleyFragment();
+                    fragmentTransaction.addToBackStack("Alley");
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     fragmentTransaction.commit();
@@ -47,6 +48,7 @@ public class StartFragment extends Fragment {
                 else
                 {
                     RoomFragment fragment = new RoomFragment();
+                    fragmentTransaction.addToBackStack("Room");
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     fragmentTransaction.commit();

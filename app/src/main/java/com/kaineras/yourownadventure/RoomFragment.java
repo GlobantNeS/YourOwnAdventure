@@ -52,6 +52,7 @@ public class RoomFragment extends Fragment {
                 if(lost==6)
                 {
                     LostFragment fragment = new LostFragment();
+                    fragmentTransaction.addToBackStack("Lost");
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     fragmentTransaction.commit();
@@ -61,6 +62,7 @@ public class RoomFragment extends Fragment {
                     int ran = r.nextInt(10);
                     if(ran%2==0) {
                         AlleyFragment fragment = new AlleyFragment();
+                        fragmentTransaction.addToBackStack("Alley");
                         fragmentTransaction.replace(R.id.container, fragment);
                         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         fragmentTransaction.commit();
@@ -68,6 +70,7 @@ public class RoomFragment extends Fragment {
                     else
                     {
                         RoomFragment fragment = new RoomFragment();
+                        fragmentTransaction.addToBackStack("Room");
                         fragmentTransaction.replace(R.id.container, fragment);
                         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         fragmentTransaction.commit();

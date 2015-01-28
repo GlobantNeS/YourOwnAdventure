@@ -5,15 +5,13 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
-import java.util.Random;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -30,13 +28,54 @@ public class MainActivity extends ActionBarActivity {
         Fragment newFragment = new StartFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack(null);
+        transaction.addToBackStack("Start");
         transaction.commit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            if (getFragmentManager().getBackStackEntryCount() == 0)
+            {
+                this.finish();
+                return false;
+            }
+            else
+            {
+                getFragmentManager().popBackStack();
+                //removeCurrentFragment();
+
+                return false;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void removeCurrentFragment()
+    {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        Fragment currentFrag =  getFragmentManager().findFragmentById(R.id.container);
+
+
+        String fragName = "NONE";
+
+        if (currentFrag!=null)
+            fragName = currentFrag.getClass().getSimpleName();
+
+
+        if (currentFrag != null)
+            transaction.remove(currentFrag);
+
+        transaction.commit();
 
     }
 

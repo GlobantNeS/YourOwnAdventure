@@ -61,6 +61,7 @@ public class AlleyFragment extends Fragment{
                 int ran = r.nextInt(10);
                 if (ran % 2 == 0) {
                     RoomFragment fragment = new RoomFragment();
+                    fragmentTransaction.addToBackStack("Room");
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     fragmentTransaction.commit();
@@ -110,6 +111,7 @@ public class AlleyFragment extends Fragment{
                 if(win==7)
                 {
                     WinnerFragment fragment = new WinnerFragment();
+                    fragmentTransaction.addToBackStack("Win");
                     fragmentTransaction.replace(R.id.container, fragment);
                     fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                     fragmentTransaction.commit();
@@ -119,6 +121,7 @@ public class AlleyFragment extends Fragment{
                     int ran = r.nextInt(10);
                     if(ran%2==0) {
                         RoomFragment fragment = new RoomFragment();
+                        fragmentTransaction.addToBackStack("Room");
                         fragmentTransaction.replace(R.id.container, fragment);
                         fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         fragmentTransaction.commit();
