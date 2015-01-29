@@ -5,7 +5,6 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import android.widget.ImageButton;
 import java.util.Random;
 
 /**
- * Created by kaineras on 23/01/15.
+ * Created the first version by kaineras on 23/01/15.
  */
 public class StartFragment extends Fragment {
 
@@ -39,29 +38,20 @@ public class StartFragment extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 if(ran%2==0) {
-                    loadAlleyFragment();
+                    loadFragment(new AlleyFragment());
                 }
                 else
                 {
-                    loadRoomFragment();
+                    loadFragment(new RoomFragment());
                 }
             }
+
+            private void loadFragment(Fragment f) {
+                fragmentTransaction.addToBackStack(f.getClass().getSimpleName());
+                fragmentTransaction.replace(R.id.container, f);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                fragmentTransaction.commit();
+            }
         });
-    }
-
-    private void loadRoomFragment() {
-        RoomFragment fragment = new RoomFragment();
-        fragmentTransaction.addToBackStack("Room");
-        fragmentTransaction.replace(R.id.container, fragment);
-        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.commit();
-    }
-
-    private void loadAlleyFragment() {
-        AlleyFragment fragment = new AlleyFragment();
-        fragmentTransaction.addToBackStack("Alley");
-        fragmentTransaction.replace(R.id.container, fragment);
-        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fragmentTransaction.commit();
     }
 }

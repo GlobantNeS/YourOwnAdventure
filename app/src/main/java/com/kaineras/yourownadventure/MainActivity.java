@@ -5,13 +5,9 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 
 
@@ -51,7 +47,6 @@ public class MainActivity extends ActionBarActivity {
             {
                 getFragmentManager().popBackStack();
                 removeCurrentFragment();
-
                 return false;
             }
         }
@@ -60,16 +55,12 @@ public class MainActivity extends ActionBarActivity {
 
     public void removeCurrentFragment()
     {
-        String fragName = "NONE";
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         Fragment currentFrag =  getFragmentManager().findFragmentById(R.id.container);
 
-        if (currentFrag!=null) {
-            fragName = currentFrag.getClass().getSimpleName();
+        if (currentFrag!=null)
             transaction.remove(currentFrag);
-        }
-
         transaction.commit();
     }
 
