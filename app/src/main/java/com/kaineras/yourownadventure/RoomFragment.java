@@ -1,22 +1,18 @@
 package com.kaineras.yourownadventure;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import java.util.Random;
-
 
 public class RoomFragment extends Fragment {
 
     ImageButton mButtonLeft=null;
     ImageButton mButtonRight=null;
     View view;
-    FragmentTransaction fragmentTransaction;
+    Tools t=null;
 
     public RoomFragment() {
         // Required empty public constructor
@@ -24,14 +20,13 @@ public class RoomFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        t=new Tools();
         view =inflater.inflate(R.layout.fragment_room, container, false);
         mButtonLeft=(ImageButton) view.findViewById(R.id.buttonDoor1);
         mButtonRight=(ImageButton) view.findViewById(R.id.buttonDoor2);
@@ -45,38 +40,13 @@ public class RoomFragment extends Fragment {
         mButtonLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                Random r = new Random();
-                int lost = r.nextInt(10);
-                if(lost==6)
-                {
-                    LostFragment fragment = new LostFragment();
-                    fragmentTransaction.addToBackStack("Lost");
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
-                }
+                if(t.isLost(t.rollDice(),0))
+                    t.loadFragment(getFragmentManager(),new LostFragment(),R.id.container,"LOST");
                 else
-                {
-                    int ran = r.nextInt(10);
-                    if(ran%2==0) {
-                        AlleyFragment fragment = new AlleyFragment();
-                        fragmentTransaction.addToBackStack("Alley");
-                        fragmentTransaction.replace(R.id.container, fragment);
-                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.commit();
-                    }
+                    if(t.rollDice()%2==0)
+                        t.loadFragment(getFragmentManager(),new AlleyFragment(),R.id.container,"ALLEY");
                     else
-                    {
-                        RoomFragment fragment = new RoomFragment();
-                        fragmentTransaction.addToBackStack("Room");
-                        fragmentTransaction.replace(R.id.container, fragment);
-                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.commit();
-                    }
-                }
-
+                        t.loadFragment(getFragmentManager(),new RoomFragment(),R.id.container,"ROOM");
             }
         });
     }
@@ -85,35 +55,13 @@ public class RoomFragment extends Fragment {
         mButtonRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentTransaction = fragmentManager.beginTransaction();
-                Random r = new Random();
-                int win = r.nextInt(10);
-                if(win==7)
-                {
-                    WinnerFragment fragment = new WinnerFragment();
-                    fragmentTransaction.replace(R.id.container, fragment);
-                    fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                    fragmentTransaction.commit();
-                }
+                if(t.isWin(t.rollDice(),0))
+                    t.loadFragment(getFragmentManager(), new WinnerFragment(), R.id.container, "WIN");
                 else
-                {
-                    int ran = r.nextInt(10);
-                    if(ran%2==0) {
-                        AlleyFragment fragment = new AlleyFragment();
-                        fragmentTransaction.replace(R.id.container, fragment);
-                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.commit();
-                    }
+                    if(t.rollDice()%2==0)
+                        t.loadFragment(getFragmentManager(),new AlleyFragment(),R.id.container,"ALLEY");
                     else
-                    {
-                        RoomFragment fragment = new RoomFragment();
-                        fragmentTransaction.replace(R.id.container, fragment);
-                        fragmentTransaction.setTransition(fragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                        fragmentTransaction.commit();
-                    }
-                }
-
+                        t.loadFragment(getFragmentManager(),new RoomFragment(),R.id.container,"ROOM");
             }
         });
     }

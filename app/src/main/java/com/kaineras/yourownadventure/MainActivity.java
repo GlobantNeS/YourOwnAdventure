@@ -1,6 +1,6 @@
 package com.kaineras.yourownadventure;
 
-import android.app.FragmentManager;
+
 import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Fragment;
@@ -13,24 +13,14 @@ import android.view.MenuItem;
 
 public class MainActivity extends ActionBarActivity {
 
-
-    FragmentTransaction fragmentTransaction;
+    Tools t=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        t=new Tools();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadStartFragment();
-    }
-
-    private void loadStartFragment() {
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment newFragment = new StartFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack("Start");
-        transaction.commit();
+        t.loadFragment(getFragmentManager(),new StartFragment(),R.id.container,"START");
     }
 
     @Override
