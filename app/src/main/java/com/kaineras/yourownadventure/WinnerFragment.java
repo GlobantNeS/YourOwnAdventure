@@ -31,7 +31,7 @@ public class WinnerFragment extends Fragment {
         v=inflater.inflate(R.layout.fragment_winner, container, false);
         getPreferences();
         TextView winText=(TextView)v.findViewById(R.id.textView);
-        winText.setText(username+" "+winMes);
+        winText.setText(username+": "+winMes);
         return v;
     }
 

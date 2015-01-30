@@ -32,7 +32,7 @@ public class LostFragment extends Fragment {
         v=inflater.inflate(R.layout.fragment_lost, container, false);
         getPreferences();
         TextView lostText=(TextView)v.findViewById(R.id.textView2);
-        lostText.setText(username+" "+lostMes);
+        lostText.setText(username+": "+lostMes);
         return v;
     }
 
