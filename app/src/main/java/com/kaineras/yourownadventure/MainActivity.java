@@ -2,6 +2,10 @@ package com.kaineras.yourownadventure;
 
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -14,13 +18,31 @@ import android.view.MenuItem;
 public class MainActivity extends ActionBarActivity {
 
     Tools t=null;
+    String username;
+    String diff;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         t=new Tools();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle(R.string.message_title);
+        getPreferences();
         t.loadFragment(getFragmentManager(),new StartFragment(),R.id.container,"START");
+    }
+
+    private void getPreferences() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        username=prefs.getString("username_preference", getString(R.string.default_username_string));
+        diff=prefs.getString("user_difficulty", getString(R.string.text_empty));
+        if(username.equals(getString(R.string.default_username_string)) ||
+                diff.equals(getString(R.string.text_empty)))
+        {
+            Intent intent=new Intent(MainActivity.this,PreferenceActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -70,6 +92,8 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent=new Intent(MainActivity.this,PreferenceActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);

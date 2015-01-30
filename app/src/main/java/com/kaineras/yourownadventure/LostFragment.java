@@ -1,15 +1,21 @@
 package com.kaineras.yourownadventure;
 
-import android.app.Activity;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 public class LostFragment extends Fragment {
+
+    View v;
+    String lostMes;
+    String username;
+
     public LostFragment() {
         // Required empty public constructor
     }
@@ -23,8 +29,18 @@ public class LostFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lost, container, false);
+        v=inflater.inflate(R.layout.fragment_lost, container, false);
+        getPreferences();
+        TextView lostText=(TextView)v.findViewById(R.id.textView2);
+        lostText.setText(username+" "+lostMes);
+        return v;
+    }
+
+    private void getPreferences() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        username=prefs.getString("username_preference", getString(R.string.default_username_string));
+        lostMes=prefs.getString("looser_message", getString(R.string.text_lost));
+
     }
 
 }

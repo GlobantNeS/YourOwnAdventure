@@ -23,18 +23,32 @@ public class Tools {
         fragmentTransaction.commit();
     }
 
-    public boolean isLost(int dice,int dif)
+    public boolean isLost(int dice,String dif)
     {
+        int idif=0;
+        if(dif.equals("Normal"))
+            idif=1;
+        if(dif.equals("Hard"))
+            idif=2;
+        if(dif.equals("Nightmare"))
+            idif=3;
         boolean result=false;
-        if(dice-(dif*2)<10)
+        if(dice-(idif*2)<10)
             result=true;
         return  result;
     }
 
-    public boolean isWin(int dice,int dif)
+    public boolean isWin(int dice,String dif)
     {
+        int idif=0;
+        if(dif.equals("Normal"))
+            idif=1;
+        if(dif.equals("Hard"))
+            idif=2;
+        if(dif.equals("Nightmare"))
+            idif=3;
         boolean result=false;
-        if(dice-(dif*2)>10)
+        if(dice-(idif*2)>10)
             result=true;
         return  result;
     }

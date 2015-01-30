@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory android:title="@string/pref_cat_custom">
+    <EditTextPreference android:key="username_preference"
+        android:title="@string/user_name"
+        android:summary="@string/pref_user_summary">
+
+        </EditTextPreference>
+    <ListPreference
+        android:key="user_difficulty"
+        android:title="@string/user_dif"
+        android:entries="@array/array_user_dif"
+        android:entryValues="@array/array_user_dif"
+        />
+    <EditTextPreference android:key="winner_message"
+        android:title="@string/winner_mes"
+        android:summary="@string/winner_mes">
+    </EditTextPreference>
+    <EditTextPreference android:key="looser_message"
+        android:title="@string/looser_mes"
+        android:summary="@string/looser_mes">
+    </EditTextPreference>
+</PreferenceCategory>
+</PreferenceScreen>

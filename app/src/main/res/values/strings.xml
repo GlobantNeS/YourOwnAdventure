@@ -20,5 +20,23 @@
     <string name="text_img_lost">Lost Image</string>
     <string name="img_button_door_left">Door Left Button</string>
     <string name="img_button_door_right">Door Right Button</string>
+    <string name="pref_cat_custom">Customization</string>
+    <string name="user_name">Username</string>
+    <string name="pref_user_summary">Username for the game</string>
+    <string name="user_dif">Difficult</string>
+    <string-array name="array_user_dif">
+        <item>Easy</item>
+        <item>Normal</item>
+        <item>Hard</item>
+        <item>Nightmare</item>
+    </string-array>
+    <string name="title_activity_preference">Preferences</string>
+    <string name="action_save">Save</string>
+    <string name="default_username_string">Username</string>
+    <string name="default_difficult_string">Easy</string>
+    <string name="winner_mes">Winner Message</string>
+    <string name="looser_mes">Looser Message</string>
+    <string name="message_title">Brave Fighter</string>
+    <string name="text_empty" />
 
 </resources>
