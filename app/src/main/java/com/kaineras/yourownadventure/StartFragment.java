@@ -14,7 +14,7 @@ public class StartFragment extends Fragment {
 
     ImageButton mButtonStart=null;
     View view;
-    Tools t=null;
+    Tools t;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,11 +23,12 @@ public class StartFragment extends Fragment {
         return view;
     }
     private void preparedButton() {
+        t=new Tools();
         mButtonStart=(ImageButton)view.findViewById(R.id.buttonStart);
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(t.rollDice()%0==2)
+                if(t.rollDice() % 2 == 0)
                     t.loadFragment(getFragmentManager(),new AlleyFragment(),R.id.container,"ALLEY");
                 else
                     t.loadFragment(getFragmentManager(), new RoomFragment(), R.id.container, "ROOM");

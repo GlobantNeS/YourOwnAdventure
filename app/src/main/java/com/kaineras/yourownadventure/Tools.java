@@ -3,7 +3,6 @@ package com.kaineras.yourownadventure;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-
 import java.util.Random;
 
 /**
@@ -45,6 +44,6 @@ public class Tools {
         int result;
         Random r = new Random();
         result = r.nextInt(20);
-        return  result;
+        return  (result);
     }
 }
